@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-
+    cout << "Haello ";
     // vector<int> height = {1,8,6,2,5,4,8,3,7};
     vector<int> height = {4,1,3,1};
     int left = 0;
