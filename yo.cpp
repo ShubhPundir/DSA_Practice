@@ -13,6 +13,7 @@ int main() {
     for (const auto& [key, value] : positionMap) {
         cout << "Key: " << key << ", Value: (" << value.first << ", " << value.second << ")\n";
     }
+    // works for c++17 and higher
 
     return 0;
 }

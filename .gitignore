@@ -2,6 +2,7 @@
 .vscode/launch.json
 .vscode/c_cpp_properties.json
 
+Random
 
 *.exe
 *.class
