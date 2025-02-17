@@ -1,8 +1,8 @@
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/c_cpp_properties.json
-
-Random
+.vscode/extensions.json
+.vscode/settings.json
 
 *.exe
 *.class
