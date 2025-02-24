@@ -125,7 +125,7 @@ int main() {
                 if(UF.enemies[x] != -1 and UF.enemies[y] == -1)
                 {
                     int z = UF.enemies[x];
-                    UF.unionSet(x,y);   
+                    UF.unionSet(x,y);
                     x = UF.findSet(x);
                     UF.enemies[z] = x;
                     UF.enemies[x] = z;
