@@ -9,7 +9,7 @@ vector<bool> is_prime(MAXN + 1, true);
 
 // Function to preprocess primes using Sieve of Eratosthenes
 void sieve() {
-    is_prime[0] = is_prime[1] = false;
+    is_prime[0] = is_prime[1] = false; // 0 and 1 are not prime
     for (int i = 2; i * i <= MAXN; ++i) {
         if (is_prime[i]) {
             for (int j = i * i; j <= MAXN; j += i) {
