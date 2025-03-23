@@ -25,7 +25,6 @@ public:
                 preSumMap[sum] = i;
             }
         }
-
         return (maxLen > 0) ? maxLen : -1;
     }
 };
