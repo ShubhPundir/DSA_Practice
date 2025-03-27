@@ -22,7 +22,7 @@ public:
 
 int main(){
     Solution soln;
-    string s = "(()())(())";
+    string s = "((()()))(())";
     string res = soln.removeParentheses(s); 
     cout << res;
 }
