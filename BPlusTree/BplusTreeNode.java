@@ -1,23 +1,21 @@
 package BPlusTree;
 
-import java.util.Arrays;
-
 class BPlusTreeNode {
-    boolean isLeaf;
+    int numKeys;
     int[] keys;
-    long[] offsets;
+    long[] offset; // Only used in leaf nodes, is null for internal nodes
+    // I think this is the part of the implementation where I should have made two distinct child class
+    // Two child classes for both Internal Nodes and Leaf Nodes
     BPlusTreeNode[] children;
+    boolean isLeaf;
     BPlusTreeNode next;
-    int keyCount;
 
-    public BPlusTreeNode(int degree, boolean isLeaf) {
+    BPlusTreeNode(boolean isLeaf, int degree) {
         this.isLeaf = isLeaf;
         this.keys = new int[degree - 1];
-        Arrays.fill(this.keys, -1); // Fill keys with placeholder '-1'
-        this.offsets = isLeaf ? new long[degree - 1] : null;
-        if (this.offsets != null) Arrays.fill(this.offsets, -1L); // Fill offsets with placeholder '-1'
+        this.offset = isLeaf ? new long[degree - 1] : null;
         this.children = isLeaf ? null : new BPlusTreeNode[degree];
+        this.numKeys = 0; // so far zero lol, cos we just starting out homes
         this.next = null;
-        this.keyCount = 0;
     }
 }
