@@ -12,7 +12,7 @@ int main()
 	int n = 9, m = 5;
 	//number of islands and number of requests
 	// cin >> n >> m;
-	vector<pair<int,int>> requests = {{1,8}, {2,7}, {3,5}, {4,6}, {7,9}};
+	vector<pair<int,int>> requests = {{1, 3}, {2, 6}, {5, 8}, {2, 10}, {1, 7}, {4, 9}};
 	//storing all requests as a pairs in vector of pairs
 	
     // for(int i = 0 ; i < m ; i++)
@@ -23,7 +23,7 @@ int main()
 	// }
 	
     // sort the request on the basis of right end point
-	sort(requests.begin(),requests.end(),comp);
+	sort(requests.begin(), requests.end(), comp);
 
     for(auto p: requests)
         cout << p.first << "-" << p.second << endl;
