@@ -12,7 +12,7 @@ class BPlusTree {
     }
 
     public BPlusTree(int degree) {
-        System.out.println("Param-Ctor called with a degree: " + degree);
+        // System.out.println("Param-Ctor called with a degree: " + degree);
         this.degree = degree;
         this.root = new BPlusTreeNode(true, degree);
     }
@@ -20,7 +20,7 @@ class BPlusTree {
     public long search(int key){
         BPlusTreeNode node = root; // head node;
 
-        // get to the right leaf children node
+        // get to the correct leaf children node
         while(!node.isLeaf){
             int i = 0;
             while(i < node.numKeys && key >= node.keys[i]){
@@ -140,7 +140,7 @@ class BPlusTree {
         tree.insert(17, 1700L);
         
         tree.printTree();
-        int k = 17;
+        int k = 114;
         System.out.println("Search " + k + " : " + tree.search(k));
     }
 }
