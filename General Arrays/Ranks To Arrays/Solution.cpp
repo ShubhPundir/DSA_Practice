@@ -13,11 +13,11 @@ public:
         unordered_map<int, string> rankMapping;
 
         for(int i = 0; i < sortedScore.size(); i++){
-            if(i == 1)
+            if(i == 0)
                 rankMapping[sortedScore[i]] = "Gold Medal";
-            else if (i == 2)
+            else if (i == 1)
                 rankMapping[sortedScore[i]] = "Silver Medal";
-            else if (i == 3)
+            else if (i == 2)
                 rankMapping[sortedScore[i]] = "Bronze Medal";    
             else
                 rankMapping[sortedScore[i]] = std::to_string(i+1);
