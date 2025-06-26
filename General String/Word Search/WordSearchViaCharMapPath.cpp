@@ -3,39 +3,47 @@ using namespace std;
 
 class Solution {
 public:
-    bool exist(vector<vector<char>>& board, string word) {
-        // can start from anywhere
-        // let's look at a series of starting points
-
-        int n = board.size(); int m = board[0].size();
-        // n is our number of rows
-        // m is our number of columns
-
-        function<bool(int, int, int)> backtrack = [&](int i, int j, int k){
-            if(k == word.length())
-                return true;
-            if(i < 0 || i >= n || j <0 || j >= m || board[i][j] != word[k])
-                return false;
-            
-            char temp = board[i][j]; // marking is as visited by temporaritly marking as null
-            board[i][j] = '\0'; // null character, ascii value = 0
-            if(backtrack(i+1, j, k+1) || backtrack(i-1, j, k+1) || 
-            backtrack(i, j+1, k+1) || backtrack(i, j-1, k+1)){
-                return true;
-            }
-            board[i][j] = temp;
-            return false;
-        };
-
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(backtrack(i,j,0)){
+    bool isValid(int x, int y, int m, int n)
+    {
+        return x >= 0 && x < m && y >= 0 && y < n;
+    }
+    void dfs(vector<vector<char>>& board, string &word, int index, vector<vector<int>> &vis, bool &flag, int x, int y)
+    {
+        if(index == word.length() - 1)
+        {
+            flag = true;
+            return;
+        }
+        int m = board.size();
+        int n = board[0].size();
+        vis[x][y] = 1;
+        if(isValid(x+1, y, m, n) && board[x+1][y] == word[index + 1] && !vis[x+1][y])
+            dfs(board, word, index + 1, vis, flag, x+1, y);
+        if(isValid(x-1, y, m, n) && board[x-1][y] == word[index + 1] && !vis[x-1][y])
+            dfs(board, word, index + 1, vis, flag, x-1, y);
+        if(isValid(x, y+1, m, n) && board[x][y+1] == word[index + 1] && !vis[x][y+1])
+            dfs(board, word, index + 1, vis, flag, x, y+1);
+        if(isValid(x, y-1, m, n) && board[x][y-1] == word[index + 1] && !vis[x][y-1])
+            dfs(board, word, index + 1, vis, flag, x, y-1);
+        vis[x][y] = 0;
+    }
+    bool exist(vector<vector<char>>& board, string word) 
+    {
+        int m = board.size();
+        int n = board[0].size();
+        bool flag = false;
+        vector<vector<int>> vis(m, vector<int>(n,0));
+        for(int i = 0;i < m;i++)
+        {
+            for(int j = 0;j < n;j++)
+            {
+                if(flag)
                     return true;
-                }
+                if(board[i][j] == word[0])
+                    dfs(board, word, 0, vis, flag, i, j);
             }
         }
-        return false;
-
+        return flag;
     }
 };
 
