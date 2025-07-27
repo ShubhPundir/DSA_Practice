@@ -12,7 +12,15 @@ public:
                 swap(nums[right], nums[left++]);
             }
         }
+        // 0 1 0 3 12
+        // l
+        // r
 
+        // 0 1 0 3 12, no swap, l = 0, r = 1
+        // 1 0 0 3 12, swap, l = 1, r = 2
+        // 1 0 0 3 12, no swap, l = 1, r = 3
+        // 1 3 0 0 12, swap, l = 2, r = 4
+        // 1 3 12 0 0, swap, l = 3, r = 5
     }
 };
 
