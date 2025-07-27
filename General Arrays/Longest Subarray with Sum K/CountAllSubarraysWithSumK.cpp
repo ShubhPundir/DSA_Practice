@@ -11,7 +11,7 @@ public:
             sum += nums[i];
 
             if(mpp.find(sum - k) != mpp.end()){
-                count += mpp[sum -k];
+                count += mpp[sum - k];
             }
             mpp[sum]++;
         }
