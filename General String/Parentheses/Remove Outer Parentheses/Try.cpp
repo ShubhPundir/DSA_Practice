@@ -23,6 +23,7 @@ public:
 int main(){
     Solution soln;
     string s = "((()()))(())";
+    //          1       1
     string res = soln.removeParentheses(s); 
     cout << res;
 }
