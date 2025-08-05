@@ -10,6 +10,7 @@ class Solution{
                 pageStudent += books[i];
             } else {
                 student++;
+                pageStudent = books[i];
             }
         }
         return student;
