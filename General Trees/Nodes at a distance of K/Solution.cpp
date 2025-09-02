@@ -11,12 +11,9 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        vector<int> ans;
-        unordered_map<int, TreeNode*> parent;
+void findParents(unordered_map<TreeNode*, TreeNode*>& parent, TreeNode* root){
         queue<TreeNode*> q;
         q.push(root);
-
         while(!q.empty()){
             int size = q.size();
             for(int i = 0; i < size; i++){
@@ -24,34 +21,43 @@ public:
 
                 if(temp->left){
                     q.push(temp->left);
-                    parent[temp->left->val] = temp;
+                    parent[temp->left] = temp;
                 }
                 if(temp->right){
                     q.push(temp->right);
-                    parent[temp->right->val] = temp;
+                    parent[temp->right] = temp;
                 }
             }
         }
+    }
 
-        unordered_map<int, int> visited;
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        vector<int> ans;
+        unordered_map<TreeNode*, TreeNode*> parent;
+        
+        findParents(parent, root);
+
+        unordered_map<TreeNode*, bool> visited;
+        queue<TreeNode*> q;
         q.push(target);
+
         while(k-- && !q.empty()){
             int size = q.size();
             for(int i = 0; i < size; i++){
                 auto top = q.front(); q.pop();
 
-                visited[top->val] = 1;
+                visited[top] = true;
                 
-                if(top->left && !visited[top->left->val]){
+                if(top->left && !visited[top->left]){
                     q.push(top->left);
                 }
                 
-                if(top->right && !visited[top->right->val]){
+                if(top->right && !visited[top->right]){
                     q.push(top->right);
                 }
 
-                if(parent[top->val] && !visited[parent[top->val] -> val]){
-                    q.push(parent[top->val]);
+                if(parent[top] && !visited[parent[top]]){
+                    q.push(parent[top]);
                 }
             }
         }
