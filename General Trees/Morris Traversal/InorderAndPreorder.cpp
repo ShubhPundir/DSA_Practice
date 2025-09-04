@@ -68,5 +68,5 @@ vector<int> getPreorder(TreeNode* root){
 }
 
 
-// TC: Amortized O(N)
+// TC: Amortized O(N) + O(N)
 // SC: O(1)
