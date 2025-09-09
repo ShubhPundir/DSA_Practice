@@ -11,6 +11,7 @@ public:
                 return false;
             } else {
                 bank += bills[i] - change;
+                // bank += bills[i] - bills[i] + 5;
             }
         }
         return true;
@@ -18,3 +19,9 @@ public:
 
 };
 
+int main(){
+    Solution soln;
+    cout << boolalpha;
+    vector<int> bills = {5, 10, 5, 20};
+    cout << soln.lemonadeChange(bills);
+}
